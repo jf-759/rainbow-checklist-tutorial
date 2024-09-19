@@ -38,6 +38,10 @@ def list_all_items():
 def mark_completed(index):
     checklist[index] = ("{} {}" .format("√", checklist[index]))
 
+def user_input(prompt):
+    user_input = input(prompt)
+    return user_input
+
 def select(function_code):
    
     if function_code == "C":
@@ -52,12 +56,14 @@ def select(function_code):
     elif function_code == "P":
         list_all_items()
 
+    elif function_code == "Q":
+        
+        return False
+
     else:
         print("Unknown Option")
-
-def user_input(prompt):
-    user_input = input(prompt)
-    return user_input
+    
+    return True
 
 def test():
     
@@ -87,3 +93,9 @@ def test():
     print(user_value)
  
 test()
+
+running = True
+while running:
+    selection = user_input(
+        "Press C to add to list, R to Read from list, P to display list, and Q to quit")
+    running = select(selection)
